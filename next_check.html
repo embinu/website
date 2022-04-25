@@ -278,12 +278,12 @@
 
             window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
         }
-        /* window.oncontextmenu = function () {
+         window.oncontextmenu = function () {
             console.log("Right Click Disabled");
             return false;
         }
- */
-        /* document.onkeydown = function(e) {
+ 
+         document.onkeydown = function(e) {
                 if (e.ctrlKey && 
                     (e.keyCode === 67 || 
                     e.keyCode === 86 ||
@@ -310,7 +310,7 @@
                 else {
                     return true;
                 }
-        }; */
+        }; 
         let tableList = ['contact-name', 'contact-address', 'contact-gender', 'contact-martial', 'contact-phone']
         function getContactDetails() {
             var xhttp = new XMLHttpRequest();
