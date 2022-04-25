@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.imagecontainer {
+  position: relative;
+  width: 15%;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.imagecontainer:hover .image {
+  opacity: 0.1;
+}
+
+.imagecontainer:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  background-color: #f8f8f8be;
+  color: rgb(8, 8, 8);
+  font-size: 16px;
+  padding: 16px 32px;
+}
+</style>
+</head>
+<body>
+
+
+
+<div class="imagecontainer">
+  <img src="binu1.jpg" alt="Avatar" class="image" style="width:100%">
+  <div class="middle">
+    <div class="text">
+       
+            <div style="padding: 8px;"><span class="name-val"></span></div>
+            <div class="desig" style="padding: 8px;"><img class="img-mail" src="img/suitcase1.png" height="30" width="30"
+                alt="img2">Network Engineer</div>
+            <div class="email" style="padding: 8px;"><img class="img-mail" src="img/email.png" height="30" width="30"
+                alt="img3"><a href="mailto:binuulaal@gmail.com">binuulaal@gmail.com</a></div><br>
+            <div class="location" style="padding: 8px;"><img class="img-mail" src="img/location2.png" height="30" width="30"
+                alt="img4">Saskatoon,SK</div><br>
+            <div class="phone" style="padding: 8px;"><img class="img-phone" src="img/phone2.png" height="30" width="30"
+                alt="img5">+1 306-880-3517</div>
+          
+    </div>
+  </div>
+</div>
+  
+</body>
+</html>

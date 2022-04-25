@@ -1,0 +1,519 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        /* Style the tab */
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+
+        .button {
+            border-radius: 4px;
+            background-color: #999;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 18px;
+            padding: 10px;
+            width: 150px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+        .button span:after {
+            content: '\00AB';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+
+        .button:hover span {
+            padding-right: 25px;
+        }
+
+        .button:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            margin: 50px auto;
+            width: 40%;
+        }
+
+        form {
+            padding: 25px;
+            margin: 25px;
+            box-shadow: 0 2px 5px #f5f5f5;
+            background: #eee;
+        }
+
+        input,
+        textarea {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #1c87c9;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .contact-form button {
+            width: 15%;
+            padding: 10px;
+            border: none;
+            background: #1c87c9;
+            font-size: 16px;
+            font-weight: 400;
+            color: #fff;
+        }
+
+        button:hover {
+            background: #2371a0;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+             padding: 3px;
+            color: rgb(7, 7, 7);
+        }
+    </style>
+   
+
+<script>
+    function goback() {
+        history.back()
+    }
+        function gotoTop() {
+    
+          window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+        }
+        window.oncontextmenu = function () {
+            console.log("Right Click Disabled");
+            return false;
+        }
+        
+        document.onkeydown = function(e) {
+                if (e.ctrlKey && 
+                    (e.keyCode === 67 || 
+                    e.keyCode === 86 || 
+                    e.keyCode === 85 ||
+                    e.keyCode === 83 || 
+                    e.keyCode === 80 ||
+                    e.keyCode === 65 ||
+                    e.keyCode === 118 || 
+                    e.keyCode === 117)) {
+                    return false;
+                } 
+                else if(event.ctrlKey && event.shiftKey && event.keyCode==73)
+                {
+                    alert('Disabled ctrl+shift+i')
+                    return false;  //Prevent from ctrl+shift+i
+                }
+                else if(event.keyCode==123)
+                {
+                    alert('Disabled F12');
+                    return false;
+                }
+                else {
+                    return true;
+                }
+        };
+</script>
+
+
+</head>
+
+<body>
+
+    <!-- <h2>Tabs</h2>
+<p>Click on the buttons inside the tabbed menu:</p> -->
+    <!-- <img  id ="resume_image" src="back.png" style="vertical-align: middle; width: 82px; height: 62px; display: flex; margin: 10px auto" alt="resume" onclick="goback()" > -->
+    <div style="display:flex;width:100%;justify-content: flex-end;">
+        <button class="button" data-modal="modalOne">Leave message</button> 
+        <button class="button" onclick="goback()"><span>Back </span></button>
+    </div>
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'trainings')">About Me</button>
+        <button class="tablinks" onclick="openCity(event, 'exp')">Certifications</button>
+        <button class="tablinks" onclick="openCity(event, 'info')">Contact</button>
+        <button class="tablinks" onclick="openCity(event, 'ref')">Reference</button>
+    </div>
+
+    <div id="trainings" class="tabcontent" style="display:flex;width:100%">
+        <div style="flex-direction:row">
+            <div>ENTRY-LEVEL CYBER SECURITY ANALYST</div>
+
+            <div style="padding-top: 10px;">Cyber security student at Saskatchewan polytechnic college with board knowledege in 
+              network security components. Two years experience in computer networking. Energetic self-starter, problem-solver and 
+              team player with outstanding technical and communication skills. Fast learner with the ability to grasp new threats, concepts 
+              and technologies.
+            </div>
+
+        </div>
+    </div>
+
+    <div id="exp" class="tabcontent" style="width:100%">
+        <div style="flex-direction:row">
+            <div>
+              Red Hat Certifications
+            </div>
+            <div>
+              * Red Hat Certified Engineer (RHCE)
+              * Red Hat Certified System Administrator (RHCSA)                  
+            </div>
+        </div>
+
+    </div>
+    
+
+    <div id="info" class="tabcontent" style="width:100%">
+        <div style="flex-direction:row">
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td>Binulal Edacheri Meethal</td>
+                </tr>
+                <tr>
+                    <td>Father’s Name</td>
+                    <td>Bhaskaran</td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td>3110E, 33rd ST W, Saskatoon, S7L6K4</td>
+                </tr>
+                <tr>
+                  <td>Gender</td>
+                  <td>Male</td>
+              </tr>
+                <tr>
+                    <td>Marital Status</td>
+                    <td>Unmarried</td>
+                </tr>
+                <tr>
+                  <td>voice</td>
+                  <td>+1 306 880 3517</td>
+              </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        let modalBtns = [...document.querySelectorAll(".button")];
+        modalBtns.forEach(function (btn) {
+            btn.onclick = function () {
+                let modal = btn.getAttribute("data-modal");
+                if (modal !== null) {
+                    document.getElementById("contact-id").reset();
+                    var div = document.getElementById("modalOne");
+                    var spans = div.getElementsByTagName("span");
+
+                    for (i = 0; i < spans.length; i++) {
+                        spans[i].style.display = "none";
+                    }
+                    document.getElementById(modal).style.display = "block";
+                }
+                else {
+                    goback()
+                }
+            };
+        });
+        let closeBtns = [...document.querySelectorAll(".close")];
+        closeBtns.forEach(function (btn) {
+            btn.onclick = function () {
+                let modal = btn.closest(".modal");
+                modal.style.display = "none";
+            };
+        });
+        window.onclick = function (event) {
+            if (event.target.className === "modal") {
+                event.target.style.display = "none";
+            }
+        };
+        function closeWindow() {
+            document.getElementById("modalOne").style.display = "none";
+        }
+        function validateForm() {
+            var x = document.forms["contact-id"]["name"].value;
+            if (x == null || x == "") {
+                alert("Name must be filled out");
+                return false;
+            }
+            var z = document.forms["contact-id"]["email"].value;
+            {
+                if (z == null || z == "") {
+                    alert("Email must be filled out");
+                    return false;
+                }
+
+                var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+                if (!filter.test(z)) {
+                    alert('Please provide a valid email address');
+                    return false;
+                }
+            }
+            var y = document.forms["contact-id"]["phone"].value;
+            {
+                if (y == null || y == "") {
+                    alert("Phone number must be filled out");
+                    return false;
+                }
+                var isphone = /^(1\s|1|)?((\(\d{3}\))|\d{3})(\-|\s)?(\d{3})(\-|\s)?(\d{4})$/.test(y);
+                if (isphone) {
+                    alert("Phone number is invalid");
+                    return false;
+                }
+            }
+            var c = document.forms["contact-id"]["subject"].value;
+            {
+                if (c == null || c == "") {
+                    alert("Subject must be filled out");
+                    return false;
+                }
+            }
+            document.getElementById("contact-id").reset();
+        }
+        function validateName(x) {
+            if (x == null || x == "") {
+                return "empty";
+            }
+            else {
+                var letters = /^[A-Za-z]+$/;
+                if (x.match(letters)) {
+                    return "valid";
+                }
+                else {
+                    return "invalid";
+                }
+            }
+        }
+        function validateEmail(x) {
+            if (x == null || x == "") {
+                return "empty";
+            }
+            else {
+                var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+                if (!filter.test(x)) {
+
+                    return "invalid";
+                }
+                else {
+                    return "valid";
+                }
+            }
+        }
+        function validatePhone(x) {
+            if (x == null || x == "") {
+                return "empty";
+            }
+            else {
+                var letters = /^[A-Za-z]+$/;
+                var isphone = /^(1\s|1|)?((\(\d{3}\))|\d{3})(\-|\s)?(\d{3})(\-|\s)?(\d{4})$/.test(x);
+                if (isphone) {
+                    return "invalid";
+                }
+                else {
+                    return "valid";
+                }
+            }
+        }
+        function validateSubject(x) {
+            if (x == null || x == "") {
+                return "empty";
+            }
+            else {
+                var letters = /^[A-Za-z]+$/;
+                if (x.match(letters)) {
+                    return "valid";
+                }
+                else {
+                    return "invalid";
+                }
+            }
+        }
+        function validateData(x) {
+            var val = document.forms["contact-id"][x].value;
+            switch (x) {
+
+                case "name":
+                    if (validateName(val) == "empty") {
+                        document.getElementById(x + "Error").style.display = "block";
+                        document.getElementById(x + "Error").textContent = "Field is required";
+                    }
+                    else if (validateName(val) == "invalid") {
+                        document.getElementById(x + "Error").style.display = "block";
+                        document.getElementById(x + "Error").textContent = "Invalid value";
+                    }
+                    else {
+                        document.getElementById(x + "Error").style.display = "none";
+                    }
+                    break;
+                case "email":
+                    if (validateEmail(val) == "empty") {
+                        document.getElementById(x + "Error").style.display = "block";
+                        document.getElementById(x + "Error").textContent = "Field is required";
+                    }
+                    else if (validateEmail(val) == "invalid") {
+                        document.getElementById(x + "Error").style.display = "block";
+                        document.getElementById(x + "Error").textContent = "Invalid value";
+                    }
+                    else {
+                        document.getElementById(x + "Error").style.display = "none";
+                    }
+                    break;
+                case "phone":
+                    if (validatePhone(val) == "empty") {
+                        document.getElementById(x + "Error").style.display = "block";
+                        document.getElementById(x + "Error").textContent = "Field is required";
+                    }
+                    else if (validatePhone(val) == "invalid") {
+                        document.getElementById(x + "Error").style.display = "block";
+                        document.getElementById(x + "Error").textContent = "Invalid value";
+                    }
+                    else {
+                        document.getElementById(x + "Error").style.display = "none";
+                    }
+                    break;
+                default:
+                    if (validateSubject(val) == "empty") {
+                        document.getElementById(x + "Error").style.display = "block";
+                        document.getElementById(x + "Error").textContent = "Field is required";
+                    }
+                    else if (validateSubject(val) == "invalid") {
+                        document.getElementById(x + "Error").style.display = "block";
+                        document.getElementById(x + "Error").textContent = "Invalid value";
+                    }
+                    else {
+                        document.getElementById(x + "Error").style.display = "none";
+                    }
+
+            }
+        }
+    </script>
+<div id="modalOne" class="modal">
+    <div class="modal-content">
+        <div class="contact-form">
+            <a class="close" href="javascript:closeWindow()" style="text-decoration: none;">&times;</a>
+            <form id="contact-id" action=""  method="post">
+                <h2>Get in touch !</h2>
+                <div>
+                    <div>
+                        <input type="hidden" name="access_key" value="a75f944a-ce41-4677-8313-156099289955">                
+                        <input class="fname" type="text" name="name" placeholder="Full name"
+                            onblur="validateData('name')" />
+                        <span id="nameError" style="display: none;color: red;"></span>
+                        <input type="email" name="email" id="email" placeholder="Email"
+                            onblur="validateData('email')" />
+                        <span id="emailError" style="display: none;color: red;"></span>
+                        <input type="text" name="phone" placeholder="Phone number" onblur="validateData('phone')" />
+                        <span id="phoneError" style="display: none;color: red;"></span>
+                        <input type="text" name="subject" placeholder="Subject" onblur="validateData('subject')" />
+                        <span id="subjectError" style="display: none;color: red;"></span>
+                    </div>
+                </div>
+                <span>Message</span>
+                <div>
+                    <textarea rows="4"></textarea>
+                </div>
+                <button type="submit" style="cursor:pointer;" href="/">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+<footer>
+    <p>© 2022 Bright Security Inc. All Rights Reserved<br>
+    <a href="mailto:binuulaal@gmail.com.com">binuulaal@gmail.com.com</a></p>
+  </footer>
+
+</body>
+
+</html>

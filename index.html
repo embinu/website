@@ -1,0 +1,482 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+       <title>RESUME</title>
+        <meta charset="utf-8">
+        <meta X-XSS-Protection: 1; mode=block;>
+        <meta X-Content-Type-Options: nosniff>
+        <meta X-Frame-Options: DENY;>
+        <meta name="referrer" content="origin">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta https-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; object-src 'none'; script-src 'self'; style-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self';">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js" charset="utf-8"></script>
+   
+  <style>
+    .main-container {
+      display: flex;
+    }
+
+    .main-container>div {
+
+      margin: 10px;
+      padding: 20px;
+      font-size: 30px;
+    }
+
+    .left-container {
+      border-radius: 20px;
+      width: 20%;
+      height: 1300px;
+      background-color: #f1f1f1;
+      box-shadow: 5px 10px #999966;
+
+    }
+
+    .right-container {
+      border-radius: 20px;
+      background-color: #f1f1f1;
+      box-shadow: 5px 10px #999966;
+      width: 80%;
+      height: 1300px;
+    }
+
+  
+    .contact-info {
+      margin-bottom: 20px;
+
+    }
+
+    .name {
+      font-weight: bold;
+      display: inline-block;
+      text-align: left;
+      margin-left: 10px;
+    }
+
+    .email,
+    .desig,
+    .location,
+    .phone {
+      display: inline-flex;
+      vertical-align: inherit;
+      padding-left: 50%;
+      /* align-items: left; */
+      justify-content: left;
+    }
+
+    .email>a {
+      text-decoration: none;
+      color: black;
+      font-size: 30px;
+    }
+
+    .separator {
+      height: 10px;
+      display: inline-block;
+      border-left: 2px solid #999;
+      margin: 0px 10px;
+    }
+
+    .position,
+    .language-heading {
+      box-shadow: 5px 10px #e0e0d1;
+      width: 85%;
+      border-radius: 20px;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .imagecontainer {
+      position: relative;
+      width: 15%;
+     
+      height: auto;
+      width: auto;
+    }
+
+.image {
+  border-radius: 30px;
+  opacity: 1;
+  display: block;
+
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+.desig{
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  width: 250px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.imagecontainer:hover .image {
+  opacity: 0.1;
+ 
+ 
+}
+
+.imagecontainer:hover .middle {
+  opacity: 1;
+  background-color: rgb(148, 46, 46);
+  
+}
+
+.text {
+  background-color: #ffffff;
+  color: rgb(184, 124, 124);
+  font-size: 16px;
+  padding: 16px 32px;
+}
+
+    .img-suitcase {
+      border-radius: 50%;
+
+    }
+
+    .work-exp1 {
+      border-radius: 30%;
+      font-size: x-large;
+    }
+
+    .work-exp2 {
+      border-radius: 30%;
+      font-size: x-large;
+    }
+
+    .work-experience {
+      box-shadow: 5px 10px #e0e0d1;
+      width: 100%;
+      border-radius: 20px;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+    }
+
+    .education {
+      box-shadow: 5px 10px #e0e0d1;
+      width: 100%;
+      border-radius: 20px;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+    }
+
+
+    .skill1 {
+      display: inline-flex;
+      vertical-align: inherit;
+      padding-left: 50%;
+      /* align-items: left; */
+      justify-content: left;
+
+    }
+
+    .header,
+    .footer {
+      background-color: #f1f1f1;
+      box-shadow: 5px 10px #999966;
+      padding: 20px 10px;
+      color: black;
+      text-align: center;
+
+      line-height: 25px;
+      border-radius: 16px;
+      font-size: 60px;
+    }
+
+    .footer>a {
+      font-size: 30px;
+      height: 20px;
+    }
+
+    .footer>p {
+      font-size: 40%;
+    }
+    .button {
+            border-radius: 4px;
+            background-color: #999;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 18px;
+            padding: 10px;
+            width: 150px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+        .button span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+
+        .button:hover span {
+            padding-right: 25px;
+        }
+
+        .button:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+
+        .container {
+  display: grid;
+  grid-template-columns: repeat(1, 160px);
+  grid-gap: 10px;
+  padding-top: 1px;
+
+}
+
+.container .box .chart {
+  position: relative;
+  padding-left: 120px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 80px;
+  height: 90px;
+  color: black;
+}
+
+.container .box canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+}
+
+  </style>
+  <script>
+    function goback() {
+        history.back()
+    }
+        function gotoTop() {
+    
+          window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+        }
+        /* window.oncontextmenu = function () {
+            console.log("Right Click Disabled");
+            return false;
+        }
+        
+        document.onkeydown = function(e) {
+                if (e.ctrlKey && 
+                    (e.keyCode === 67 || 
+                    e.keyCode === 86 ||
+                    e.keyCode === 74 || 
+                    e.keyCode === 85 ||
+                    e.keyCode === 83 || 
+                    e.keyCode === 80 ||
+                    e.keyCode === 65 ||
+                    e.keyCode === 118 || 
+                    e.keyCode === 117)) {
+                    alert('Oops....!! it has been disabled')
+                    return false;
+                } 
+                else if(event.ctrlKey && event.shiftKey && event.keyCode==73)
+                {
+                    alert('Oops....!! it has been disabled')
+                    return false;  //Prevent from ctrl+shift+i
+                }
+                else if(event.keyCode==123)
+                {
+                  alert('Oops....!! it has been disabled');
+                    return false;
+                }
+                else {
+                    return true;
+                } */
+        // };
+</script>
+</head>
+
+<body>
+  <div class="header">
+    Binulal Edecheri Meethal
+    <br/>
+    <span style="padding-top:20px;font-size: 24px;"><a href="mailto:binuulaal@gmail.com.com">binuulaal@gmail.com.com</a>
+    </span>
+    <a href="https://www.linkedin.com/in/binulal-edacheri-meethal-a903a8a3/"><img style="padding-top:20px;" src="img/LinkedIn_Logo_2019.png"
+      height="25" width="100" alt="img33" /></a>
+  </div><br />
+  <div class="main-container">
+    <div class="left-container">
+
+      
+<div class="imagecontainer">
+  <img src="img/binu1.jpg" alt="Avatar" class="image" style="width:100%">
+  <div class="middle">
+    <div class="text">
+       
+            <div style="padding: 8px;"><span class="name-val"></span></div>
+            <div class="desig" style="padding: 8px;">Network Engineer</div>
+            
+                <!-- <div class="desig" style="padding: 8px;"><img class="img-mail" src="img/suitcase1.png" height="30" width="30"
+                  alt="img2">Network Engineer</div> -->
+            <!-- <div class="email" style="padding: 8px;"><img class="img-mail" src="img/email.png" height="30" width="30"
+                alt="img3"><a href="mailto:binuulaal@gmail.com">binuulaal@gmail.com</a></div><br>
+            <div class="location" style="padding: 8px;"><img class="img-mail" src="img/location2.png" height="30" width="30"
+                alt="img4">Saskatoon,SK</div><br>
+            <div class="phone" style="padding: 8px;"><img class="img-phone" src="img/phone2.png" height="30" width="30"
+                alt="img5">+1 306-880-3517</div> -->
+          
+    </div>
+  </div>
+</div>
+      <div class="skills">
+        <br /> <br />
+        <span class="position" style="padding: 8px;">Skills</span>
+            <div><br ></div>
+            <div class="container">
+              <div class="box">
+                <div class="chart" data-percent="50" >Linux</div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="box">
+                <div class="chart" data-percent="40" >Unix</div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="box">
+                <div class="chart" data-percent="80" >Rhce</div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="box">
+                <div class="chart" data-percent="20" >Python</div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="box">
+                <div class="chart" data-percent="20" >Bash</div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="box">
+                <a href="reco-report_passwordProtect-protected.pdf" download="newFile" target="blank">Download</a>
+                <button onclick="downloadURI('binu1.jpg,newImage')">Download Receipt</button>
+                
+              </div>
+            </div>
+            <script type="text/javascript">
+            $(function() {
+            $('.chart').easyPieChart({
+              size: 80,
+              barColor: "#999966",
+              scaleLength: 0,
+              lineWidth: 15,
+              trackColor: "#e0e0d1",
+              lineCap: "circle",
+              animate: 2000,
+            });
+          });
+          function downloadURI(uri, name) 
+            {
+                var link = document.createElement("a");
+                link.setAttribute('download', name);
+                link.href = uri;
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+            }
+          </script>
+      </div>
+    </div>
+    <div class="right-container">
+      <div class="work-experience"><img class="img-suitcase" src="img/suitcase2.png" height="50" width="50" alt="img16">
+        Work Experience</div><br>
+      <!--<div class="work experience">-->
+      <span class="position1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Business Developement Manager </span>
+      <div class="work-exp1" style="padding: 8px;"><img class="img-calander" src="img/calander2.png" height="30" width="30"
+          alt="img17">2019 - 2021</div>
+      <span class="work-exp2" style="padding: 8px;"><img class="img-dot" src="img/circle.png" height="30" width="30"
+          alt="img18">Successfully achieved the project scheduled goals</span><br>
+      <span class="work-exp2" style="padding: 8px;"><img class="img-dot" src="img/circle.png" height="30" width="30"
+          alt="img19">Developed and implimented the new marketing and sales plan</span><br>
+      <span class="work-exp2" style="padding: 8px;"><img class="img-dot" src="img/circle.png" height="30" width="30"
+          alt="img20">Reviewed constantly the customer feedback and then suggested way to improve the process
+      </span><br>
+
+      <span class="position1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Network Engineer</span>
+      <div class="work-exp2" style="padding: 8px;"><img class="img-calander" src="img/calander2.png" height="30" width="30"
+          alt="img21">2017-2019</div>
+      <span class="work-exp2" style="padding: 8px;"><img class="img-dot" src="img/circle.png" height="30" width="30"
+          alt="img22">Establishes networking environment by designing system configuration and directing system
+        installation.</span><br>
+      <span class="work-exp2" style="padding: 8px;"><img class="img-dot" src="img/circle.png" height="30" width="30"
+          alt="img23">Communicate with customers via email and phone for remote support and to give guidance during
+        troubleshooting</span><br>
+      <span class="work-exp2" style="padding: 8px;"><img class="img-dot" src="img/circle.png" height="30" width="30"
+          alt="img24">Assists with sales engineering requests to assess site surveys to interpret client
+        requirements</span><br>
+      <span class="position1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Server Administrator </span>
+      <div class="work-exp2" style="padding: 8px;"><img class="img-calander" src="img/calander2.png" height="30" width="30"
+          alt="img25">2015-2017</div>
+      <span class="work-exp2" style="padding: 8px;"><img class="img-dot" src="img/circle.png" height="30" width="30"
+          alt="img26">Responsible for the maintenance, configuration, and reliable operation of computer systems,
+        network servers, and virtualization</span><br>
+      <span class="work-exp2" style="padding: 8px;"><img class="img-dot" src="img/circle.png" height="30" width="30"
+          alt="img27">Ensure security through access controls, backups and firewalls</span><br>
+      <span class="work-exp2" style="padding: 8px;"><img class="img-dot" src="img/circle.png" height="30" width="30"
+          alt="img28">Provide documentation and technical specifications to IT staff for planning and implementing new or upgrades of IT infrastructure</span><br><br>
+
+      <div class="education"><img class="img-suitcase" src="img/education.png" height="50" width="50" alt="img32">Education
+      </div>
+      <div class="work-exp2" style="padding: 8px;"><br /><img class="img-calander" src="img/calander2.png" height="30"
+          width="30" alt="img29">January 2022 - current</div>
+      <span class="work-exp2" style="padding: 8px; font-size:x-large;">Cyber Security</span><br>
+      <span class="work-exp2" style="padding: 8px;">Saskatchewan Polytechnic College, Saskatoon, Canada</span><br>
+
+      <div class="work-exp2" style="padding: 8px;"><img class="img-calander" src="img/calander2.png" height="30" width="30"
+          alt="img30">March 2014</div>
+      <span class="work-exp2" style="padding: 8px;">Bachelor of Technology in Computer Science and
+        Engineering</span><br>
+      <span class="work-exp2" style="padding: 8px;">College of Engineering Kidangoor, Cusat University, India</span><br>
+
+      <div class="work-exp2" style="padding: 8px;"><img class="img-calander" src="img/calander2.png" height="30" width="30"
+          alt="img31">February 2011</div>
+      <span class="work-exp2" style="padding: 8px;">Diploma in computer Hardware and Maintenance</span><br>
+      <span class="work-exp2" style="padding: 8px;">Model Polytechnic College, Vadakara, India</span><br> <br />
+    </div>
+
+  </div> <br />
+  <footer class="footer">
+    <p>Developed by Binulal Edacheri Meethal</p>
+    <div style="display: flex;">
+      <div style="display:flex;width:50%;justify-content: flex-end;"><button class="button" onclick="window.location.href='next_check.html'"><span>Next </span></button></div>
+      <div style="display:flex;width: 50%;justify-content: flex-end;cursor: pointer;"><img src="img/arrow.png" height="48" width="64" alt="uparrow" onclick="gotoTop()"></div>
+    </div>
+  </footer>
+</body>
+
+</html>

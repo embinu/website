@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>RESUME</title>
+    <meta charset="utf-8">
+    <meta X-XSS-Protection: 1; mode=block;>
+    <meta X-Content-Type-Options: nosniff>
+    <meta X-Frame-Options: DENY;>
+    <meta name="referrer" content="origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        /* Style the tab */
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+
+        .button {
+            border-radius: 4px;
+            background-color: #999;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 18px;
+            padding: 10px;
+            width: 150px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+        .button span:after {
+            content: '\00AB';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+
+        .button:hover span {
+            padding-right: 25px;
+        }
+
+        .button:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            margin: 50px auto;
+            width: 40%;
+        }
+
+        form {
+            padding: 5px;
+            margin: 5px;
+            box-shadow: 0 2px 5px #f5f5f5;
+            background: #eee;
+        }
+
+        input,
+        textarea {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #1c87c9;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .contact-form button {
+            width: 15%;
+            padding: 10px;
+            border: none;
+            background: #1c87c9;
+            font-size: 16px;
+            font-weight: 400;
+            color: #fff;
+        }
+
+        button:hover {
+            background: #2371a0;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .collapsible {
+            background-color: #777;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .active,
+        .collapsible:hover {
+            background-color: #555;
+        }
+
+        .collapsible:after {
+            content: '\002B';
+            color: white;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+        .active:after {
+            content: "\2212";
+        }
+
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: #f1f1f1;
+        }
+
+        .wrapper {
+            width: 90%;
+            padding: 10px;
+            background: #fff;
+            box-shadow: 0 0px 2.2px rgba(0, 0, 0, 0.028), 0 0px 5.3px rgba(0, 0, 0, 0.04),
+                0 0px 10px rgba(0, 0, 0, 0.05), 0 0px 17.9px rgba(0, 0, 0, 0.06),
+                0 0px 33.4px rgba(0, 0, 0, 0.072), 0 0px 80px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            background: rgba(173, 216, 230, 0.7);
+            letter-spacing: 0.1rem;
+            padding: 1rem;
+            cursor: default;
+        }
+
+        form,
+        input,
+        textarea {
+            font-family: inherit;
+            font-size: initial;
+        }
+
+        .form-group label {
+            display: block;
+            margin: .25rem 0 0.5rem 0;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+
+            padding: .5rem 0.8rem;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            outline: 0;
+            transition: border 0.15s;
+        }
+
+        /*  .form-group input[type="text"],
+        .form-group input[type="email"] {
+            /* height: 4.6rem; 
+        } */
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .submit {
+            font-weight: bold;
+            margin-top: 1rem;
+            padding: 1rem 1.5rem;
+            border: none;
+            background: rgba(173, 216, 230, 0.7);
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        i {
+            margin-right: 0.5rem;
+        }
+
+        .submit:hover {
+            background: rgba(173, 216, 230, 1);
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group textarea:focus {
+            border: 1px solid #222;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3px;
+            color: rgb(7, 7, 7);
+        }
+    </style>
+
+    <script>
+
+        function goback() {
+            history.back()
+        }
+        function gotoTop() {
+
+            window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+        }
+        /* window.oncontextmenu = function () {
+            console.log("Right Click Disabled");
+            return false;
+        }
+ */
+        /* document.onkeydown = function(e) {
+                if (e.ctrlKey && 
+                    (e.keyCode === 67 || 
+                    e.keyCode === 86 ||
+                    e.keyCode === 74 || 
+                    e.keyCode === 85 ||
+                    e.keyCode === 83 || 
+                    e.keyCode === 80 ||
+                    e.keyCode === 65 ||
+                    e.keyCode === 118 || 
+                    e.keyCode === 117)) {
+                    alert('Oops....!! it has been disabled')
+                    return false;
+                } 
+                else if(event.ctrlKey && event.shiftKey && event.keyCode==73)
+                {
+                    alert('Oops....!! it has been disabled')
+                    return false;  //Prevent from ctrl+shift+i
+                }
+                else if(event.keyCode==123)
+                {
+                    alert('Oops....!! it has been disabled');
+                    return false;
+                }
+                else {
+                    return true;
+                }
+        }; */
+        let tableList = ['contact-name', 'contact-address', 'contact-gender', 'contact-martial', 'contact-phone']
+        function getContactDetails() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var obj = JSON.parse(this.responseText);
+                    var data = []
+                    data = obj.data
+                    index = 0
+                    tableList.forEach(obj => {
+                        document.getElementById(obj).innerHTML = data[index] + "<img src=\"img/bin.png\" style= 'cursor:pointer;margin-left:5px;float:right' onclick = 'deleteContact(" + index + ")' width = '16px' height = '16px' > ";
+                        index++
+                    })
+                }
+            };
+            xhttp.open("GET", "http://52.71.204.219:3300/contact", true);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.setRequestHeader("Authorization", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2NDcxOTAzMDgsImV4cCI6MTY3ODcyNjMwOCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IlRoaWxhayIsIlN1cm5hbWUiOiJSYWoiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.wvWtcw03cfb6tKXBpYMbQaFbrO5Pfbnp2TeEyEdyAHM");
+            xhttp.send()
+        }
+        function deleteContact() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    //location.reload();
+                }
+            };
+            xhttp.open("DELETE", "http://52.71.204.219:3300/contact", true);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.setRequestHeader("Authorization", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2NDcxOTAzMDgsImV4cCI6MTY3ODcyNjMwOCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IlRoaWxhayIsIlN1cm5hbWUiOiJSYWoiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.wvWtcw03cfb6tKXBpYMbQaFbrO5Pfbnp2TeEyEdyAHM");
+            var remdata = {
+                "data": "name"
+            }
+            xhttp.send(JSON.stringify(remdata))
+        }
+        /* function editContact(index) {
+            let skill = document.getElementById("skill-idbox").value
+            let previousValue = document.getElementById("prevValue").value
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    location.reload()
+                }
+            };
+            xhttp.open("PUT", "http://ec2-35-174-4-2.compute-1.amazonaws.com:3300/contact", true);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.setRequestHeader("Authorization", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2NDcxOTAzMDgsImV4cCI6MTY3ODcyNjMwOCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IlRoaWxhayIsIlN1cm5hbWUiOiJSYWoiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.wvWtcw03cfb6tKXBpYMbQaFbrO5Pfbnp2TeEyEdyAHM");
+            var remdata = {
+                "data": skill,
+                "value": previousValue
+            }
+            xhttp.send(JSON.stringify(remdata))
+        } */
+    </script>
+
+
+</head>
+
+<body onload="getContactDetails()">
+    <div>
+        <button class="collapsible">About Me</button>
+        <div class="content">
+            <div>
+                <b>ENTRY-LEVEL CYBER SECURITY ANALYST</b>
+            </div>
+
+            <div style="padding-top: 10px;">Cyber security student at Saskatchewan polytechnic college with board
+                knowledege in network<br> security components. Two years experience in computer networking. Energetic self-starter,
+                problem-solver and team<br> player with outstanding technical and communication skills. Fast learner with the ability to grasp
+                new threats, concepts and technologies.
+            </div>
+        </div>
+        <button class="collapsible">Certifications</button>
+        <div class="content">
+            <div style="flex-direction:row">
+                <div>
+                    <b>Red Hat Certifications</b>
+                </div>
+                <div>
+                    <div>* Red Hat Certified Engineer (RHCE) </div>
+                    <div>* Red Hat Certified System Administrator (RHCSA)</div>
+                    <div>* CCNA</div>
+                </div>
+            </div>
+        </div>
+        <button class="collapsible">Contact</button>
+        <div class="content">
+            <div style="flex-direction:row">
+                <table>
+                    <tr>
+                        <td style="width:40%"><b>Name:</b></td>
+                        <td id="contact-name">Binulal Edacheri Meethal</td>
+                    </tr>
+                    <tr>
+                        <td style="width:40%"><b>Address:</b></td>
+                        <td id="contact-address">3110E, 33rd ST W, Saskatoon, S7L6K4</td>
+                    </tr>
+                    <tr>
+                        <td style="width:40%"><b>Gender:</b></td>
+                        <td id="contact-gender">Male</td>
+                    </tr>
+                    <tr>
+                        <td style="width:40%"><b>Marital Status:</b></td>
+                        <td id="contact-martial">Unmarried</td>
+                    </tr>
+                    <tr>
+                        <td style="width:40%"><b>Voice:</b></td>
+                        <td id="contact-phone">306 880 3517</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div style="display:flex;width:100%;justify-content:center;margin: 25px;">
+        <button class="button" data-modal="modalOne">Leave message</button>
+        <button class="button" onclick="goback()"><span>Back </span></button>
+    </div>
+
+    <div id="modalOne" class="modal">
+        <div class="modal-content">
+            <div class="wrapper">
+                <h2>Get in touch !</h2>
+                <a class="close" href="javascript:closeWindow()" style="text-decoration: none;">&times;</a>
+                <form id="contact-id" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" name="Name" id="name" placeholder="First and Last" required minlength="3"
+                            maxlength="25" onblur="validateData('name')" />
+                        <span id="nameError" style="display: none;color: red;"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" name="Email" id="email" placeholder="user@domain.tld" required
+                            onblur="validateData('Email')" />
+                        <span id="emailError" style="display: none;color: red;"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Phone</label>
+                        <input type="number" name="Phone" id="phone" placeholder="Phone number" required
+                            onblur="validateData('Phone')" />
+                        <span id="phoneError" style="display: none;color: red;"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea name="Message" id="message" rows="5" placeholder="Type your message here...."
+                            onblur="validateData('Message')"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit"  class="submit" id="send-btn"><i
+                                class="far fa-paper-plane"></i>Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+
+        function goback() {
+            history.back()
+        }
+
+        let modalBtns = [...document.querySelectorAll(".button")];
+        modalBtns.forEach(function (btn) {
+            btn.onclick = function () {
+                let modal = btn.getAttribute("data-modal");
+                if (modal !== null) {
+                    // document.getElementById("contact-id").reset();
+                    var div = document.getElementById("modalOne");
+                    var spans = div.getElementsByTagName("span");
+
+                    for (i = 0; i < spans.length; i++) {
+                        spans[i].style.display = "none";
+                    }
+                    document.getElementById(modal).style.display = "block";
+                }
+                else {
+                    goback()
+                }
+            };
+        });
+        let closeBtns = [...document.querySelectorAll(".close")];
+        closeBtns.forEach(function (btn) {
+            btn.onclick = function () {
+                let modal = btn.closest(".modal");
+                modal.style.display = "none";
+            };
+        });
+        window.onclick = function (event) {
+            if (event.target.className === "modal") {
+                event.target.style.display = "none";
+            }
+        };
+        function closeWindow() {
+            document.getElementById("modalOne").style.display = "none";
+        }
+        function validateData(x) {
+            document.getElementById("send-btn").click()
+        }
+
+    </script>
+
+    <footer>
+        <p>© 2022 Bright Security Inc. All Rights Reserved<br>
+            <a href="mailto:binuulaal@gmail.com.com">binu.4sree@gmail.com.com</a>
+        </p>
+    </footer>
+
+</body>
+
+</html>
